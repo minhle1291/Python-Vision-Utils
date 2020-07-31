@@ -18,11 +18,7 @@ def darknet_to_coord(darknet_xc, darknet_yc, darknet_xw, darknet_yw, img_width, 
   y0 = coord_darknet_ymin*img_height
   y1 = coord_darknet_ymax*img_height
   if zeroD: return x0, x1, y0, y1
-  coord_darknet_x0y0 = [coord_darknet_xmin*img_width, coord_darknet_ymin*img_height]
-  coord_darknet_x1y0 = [coord_darknet_xmax*img_width, coord_darknet_ymin*img_height]
-  coord_darknet_x0y1 = [coord_darknet_xmin*img_width, coord_darknet_ymax*img_height]
-  coord_darknet_x1y1 = [coord_darknet_xmax*img_width, coord_darknet_ymax*img_height]
-  return coord_darknet_x0y0, coord_darknet_x1y0, coord_darknet_x0y1, coord_darknet_x1y1
+  return [x0, y0], [x1, y0], [x0, y1], [x1, y1]
 
 def oid_to_darknet(oid_xmin, oid_xmax, oid_ymin, oid_ymax):
   darknet_xc = (oid_xmin + oid_xmax)/2
@@ -37,8 +33,4 @@ def oid_to_coord(oid_xmin, oid_xmax, oid_ymin, oid_ymax, img_width, img_height, 
   y0 = oid_ymin*img_height
   y1 = oid_ymax*img_height
   if zeroD: return x0, x1, y0, y1
-  coord_oid_x0y0 = [x0, y0]
-  coord_oid_x1y0 = [x1, y0]
-  coord_oid_x0y1 = [x0, y1]
-  coord_oid_x1y1 = [x1, y1]
-  return coord_oid_x0y0, coord_oid_x1y0, coord_oid_x0y1, coord_oid_x1y1
+  return [x0, y0], [x1, y0], [x0, y1], [x1, y1]
